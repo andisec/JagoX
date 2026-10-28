@@ -1,17 +1,22 @@
 # JagoX v1.0.0
 
 <div align="center">
-     ██╗ █████╗  ██████╗  ██████╗ ██╗  ██╗
-     ██║██╔══██╗██╔════╝ ██╔═══██╗╚██╗██╔╝
-     ██║███████║██║  ███╗██║   ██║ ╚███╔╝ 
-██   ██║██╔══██║██║   ██║██║   ██║ ██╔██╗ 
-╚█████╔╝██║  ██║╚██████╔╝╚██████╔╝██╔╝ ██╗
- ╚════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝
-                                          
+
+<pre>
+    ░█████                                  ░██    ░██
+      ░██                                    ░██  ░██
+      ░██   ░██████    ░████████  ░███████    ░██░██
+      ░██        ░██  ░██    ░██ ░██    ░██    ░███
+░██   ░██   ░███████  ░██    ░██ ░██    ░██   ░██░██
+░██   ░██  ░██   ░██  ░██   ░███ ░██    ░██  ░██  ░██
+ ░██████    ░█████░██  ░█████░██  ░███████  ░██    ░██
+                             ░██
+                       ░███████
+</pre>
 
 **Automatic Security Scanner Framework**
 
-*Pure Python stdlib · 15 modules · MIT License*
+*Python CLI · 15 internal modules · MIT License*
 
 **Version:** `1.0.0` · **Platform:** Linux / macOS / WSL
 
@@ -21,9 +26,10 @@
 
 ## 🎯 Apa itu JagoX?
 
-JagoX adalah framework security scanner yang membungkus Nmap dengan
-orkestrasi cerdas dan **15 modul internal** — semua pure Python stdlib,
-zero external dependencies (kecuali Nmap + `rich`).
+JagoX adalah framework security scanner yang mengorkestrasi Nmap melalui
+**15 modul internal**. Logika inti menggunakan Python standard library;
+Nmap diperlukan untuk pemindaian jaringan, `rich` digunakan untuk output terminal,
+dan `prompt_toolkit` diperlukan jika ingin memakai mode TUI.
 
 Cukup ketik `jagox scan <target>`, dan JagoX otomatis menjalankan:
 
@@ -42,16 +48,20 @@ Cukup ketik `jagox scan <target>`, dan JagoX otomatis menjalankan:
 
 **2. Install Python dependencies**:
 
-    pip install rich
+    python3 -m pip install rich
+
+Untuk fitur TUI (`--tui`), pasang dependensi tambahan ini:
+
+    python3 -m pip install prompt_toolkit
 
 **3. Jalankan**:
 
     cd JagoX
     sudo python3 jagox.py scan example.com
 
-Atau install via pip:
+Atau install CLI secara lokal dari folder project:
 
-    pip install -e .
+    python3 -m pip install -e .
     jagox scan example.com
 
 ---
