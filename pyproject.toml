@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jagox"
+version = "1.0.0"
+description = "JagoX — Automatic Nmap + Web Vulnerability Scanner Framework"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.8"
+authors = [{ name = "JagoX Project" }]
+keywords = ["security", "scanner", "nmap", "pentest", "sql-injection",
+             "xss", "osint", "tls"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+]
+dependencies = [
+    "rich>=12.0.0",
+]
+
+[project.optional-dependencies]
+tui = ["prompt_toolkit>=3.0.0"]
+osint = ["python-whois", "geoip2"]
+full = ["prompt_toolkit>=3.0.0", "python-whois", "geoip2"]
+
+[project.scripts]
+jagox = "jagox:main"
+nmpx = "nmpx:main"
+
+[project.urls]
+"Homepage" = "https://github.com/USERNAME/JagoX"
+"Bug Tracker" = "https://github.com/USERNAME/JagoX/issues"
+
+[tool.setuptools]
+py-modules = ["jagox", "nmpx"]
+
+[tool.setuptools.packages.find]
+include = ["modules", "modules.*"]
+
+[tool.setuptools.package-data]
+modules = ["plugins/*.py"]

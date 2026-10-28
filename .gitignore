@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+build/
+dist/
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Backup
+*.bak
+*.backup
+*.OLD*
+*.wrong*
+*.v0*
+
+# Env & logs
+.env
+.env.local
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Tools
+GeoLite2-*.mmdb

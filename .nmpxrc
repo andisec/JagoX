@@ -1,0 +1,146 @@
+# ============================================================
+# nmpX / JagoX Configuration File
+# v1.0.0
+# ============================================================
+# Format: INI (bisa diedit manual)
+# Lokasi: folder yang sama dengan nmpx.py
+#
+# Boolean: true / false (lowercase)
+# Kalau file tidak ada / corrupt → pakai default
+# ============================================================
+
+[general]
+# CVSS threshold — CVE di bawah nilai ini tidak ditampilkan
+# 0.0–3.9 LOW | 4.0–6.9 MEDIUM | 7.0–8.9 HIGH | 9.0–10.0 CRITICAL
+cvss_threshold = 4.0
+
+# Worker paralel scanning (1–100)
+# 10 = LAN | 5 = internet | 20–30 = lab
+max_workers = 10
+
+# Safe mode — untuk production
+# Kalau true: workers dikurangi, timing jadi T2, delay antar request
+safe_mode = false
+
+# Toggle modul saat full pipeline
+enable_banner_grab = true
+enable_web_vuln = true
+enable_sqli = true
+enable_xss = true
+enable_dir_brute = true
+enable_subdomain = true
+enable_graphql = true
+enable_http2 = true
+enable_watchdog = false
+
+
+[scan]
+# Profile default kalau user hanya tekan Enter
+#   1 = Quick         (top 100 port + versi)
+#   2 = Full TCP      (semua 65535 port)
+#   3 = Stealth       (SYN lambat + fragmentasi, butuh root)
+#   4 = UDP Top 100   (butuh root)
+#   5 = Vuln Scan     (NSE vulners)
+#   6 = Aggressive    (OS + versi + script, butuh root)
+default_profile = 1
+
+# Timing template nmap default (T0–T5)
+# 4 = aggressive (default) | 2 = polite (safe mode)
+timing_template = T4
+
+
+[ratelimit]
+# Delay antar request web (ms) — dipakai di safe mode
+delay_ms = 500
+
+# Worker max saat safe mode
+max_concurrent_safe = 3
+
+
+[output]
+# Format output — selalu "terminal" (tabel rich)
+format = terminal
+
+# Tampilkan banner ASCII art saat startup
+show_banner = true
+
+# Tampilkan status modul saat startup
+show_module_status = true
+
+
+[advanced]
+# Timeout scan nmap utama per host (detik)
+scan_timeout = 900
+
+# Timeout banner grab per port (detik)
+banner_timeout = 3.0
+
+# Worker banner grab (independen dari max_workers)
+banner_workers = 10
+
+# Batas host sebelum minta konfirmasi user
+max_hosts_warning = 1024
+
+# Tier default dir_brute (1=quick, 2=standard, 3=deep)
+dir_brute_tier = 2
+
+# Tier default subdomain (1=quick, 2=standard, 3=deep)
+subdomain_tier = 2
+
+# Interval watchdog mode (detik) — kalau --watch tanpa angka
+watch_interval = 300
+
+
+[wordlist]
+# Path custom wordlist (opsional)
+# Format: satu path per baris, bisa ada # comment
+# Contoh: /home/user/wordlists/dirs.txt
+dir_brute_custom =
+subdomain_custom =
+
+
+[tui]
+# Aktifkan TUI mode by default (butuh prompt_toolkit)
+# Bisa di-override dengan flag --tui
+enabled = false
+
+
+[fuzz]
+# Aktifkan HTTP fuzzer saat pipeline
+# Warning: bisa noisy ke target production
+enable_http_fuzz = false
+
+# Mode fuzz default (param,header,path)
+fuzz_modes = param,header,path
+
+
+[portknock]
+# Aktifkan port-knock detection saat pipeline
+enable_port_knock = false
+
+# Port target default
+target_port = 22
+
+# Custom sequence (kosong = pakai 7 sequence default)
+# Contoh: 7000,8000,9000
+custom_sequence =
+
+
+[search]
+# Prompt interactive search setelah scan selesai
+prompt_after_scan = true
+
+
+[dump]
+# WAJIB opt-in — butuh flag --dump di CLI
+# Ini fitur ekstraksi data, gunakan hanya pada sistem milik sendiri
+enable_dump = false
+
+# Batas jumlah rows saat dump
+max_rows = 10
+
+# Batas karakter per field saat dump
+max_char = 50
+
+# Timeout total dump (menit)
+timeout_minutes = 30
